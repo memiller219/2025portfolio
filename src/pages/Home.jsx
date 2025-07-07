@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { Parallax } from "../components/Parallax";
-import AboutSection from "../components/AboutSection";
 import { Navbar } from "../components/Navbar";
 import AboutHero from "../components/AboutHero";
 import ParallaxHero from "../components/ParallaxHero";

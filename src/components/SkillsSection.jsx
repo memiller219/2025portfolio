@@ -13,24 +13,33 @@ const skills = [
 ];
 
 export default function SkillsSection() {
-  const ref = useRef(null);
+  const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: sectionRef,
     offset: ["start end", "end start"],
   });
-  const opacity = useTransform(scrollYProgress, [0.2, 0.7], [1, 0]);
+
+  // Fade title out once tiles start covering it
+  const opacity = useTransform(scrollYProgress, [0.2, 0.4], [1, 0]);
 
   return (
-    <section ref={ref} className="relative py-32 px-6 max-w-6xl mx-auto">
+    <section
+      id="skills"
+      ref={sectionRef}
+      className="relative py-32 px-6 max-w-6xl mx-auto"
+    >
       <GeometricParallax />
+
+      {/* Sticky Title */}
       <motion.h2
         style={{ opacity }}
-        className="text-4xl font-bold text-center sticky top-24 z-10"
+        className="text-4xl font-bold text-center sticky top-[70vh] z-0 pointer-events-none"
       >
-        Skills
+        What I Use <span className="font-light text-2xl">(so far...)</span>
       </motion.h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-20 z-0 relative">
+      {/* Scrollable Tiles */}
+      <div className="mt-[10vh] grid grid-cols-2 md:grid-cols-3 gap-6 relative z-10">
         {skills.map((skill, index) => (
           <motion.div
             key={index}

@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 import { X, Menu } from "lucide-react";
 
 const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
+  { name: "Home", href: "#home" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
@@ -32,13 +31,13 @@ export const Navbar = () => {
         isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
       )}
     >
-      <div className="flex justify-end  p-2">
+      <div className="flex justify-end p-2">
         <div className="hidden m-auto pr-10 flex md:flex space-x-6">
           {navItems.map((links, key) => (
             <a
               key={key}
               href={links.href}
-              className="text-white hover:text-primary/50 transition-colors duration-300 "
+              className=" font-[300] text-white hover:text-white/50 transition-colors duration-300 "
             >
               {links.name}
             </a>
