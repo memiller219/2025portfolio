@@ -60,7 +60,7 @@ const ParallaxHero = () => {
                     just one more console.log away from greatness.
                   </span>
 
-                  <span className="relative group font-light">
+                  <span className="text-4xl relative group font-light">
                     Hi, I’m Michael{" "}
                     <span className="font-light text-[#00fff4]"> - </span>{" "}
                     <span className="absolute opacity-0 group-hover:opacity-100 transition text-sm text-[#00FFF4] block -mt-24">
@@ -68,7 +68,6 @@ const ParallaxHero = () => {
                     </span>
                   </span>
 
-                  {/* Typing animation stays inside fixed width */}
                   <div className="min-h-[2.5rem] md:min-h-[3.5rem]">
                     <span className="text-[#00FFF4] inline-block">
                       <Typewriter

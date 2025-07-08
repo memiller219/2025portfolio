@@ -5,8 +5,12 @@ import AboutHero from "../components/AboutHero";
 import ParallaxHero from "../components/ParallaxHero";
 import SkillsSection from "../components/SkillsSection";
 import ProjectsSection from "../components/ProjectsSection";
+import ContactSection from "../components/ContactSection";
+import FooterSection from "../components/FooterSection";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
+
 
 export const Home = () => {
   useEffect(() => {
@@ -24,15 +28,17 @@ export const Home = () => {
         <Parallax offset={600} speed={0.6}>
           <AboutHero />
         </Parallax>
-        <Parallax offset={800} speed={0.4}>
+        <Parallax offset={400} speed={0.4}>
           <SkillsSection />
         </Parallax>
         <Parallax offset={1200} speed={0.2}>
           <ProjectsSection />
         </Parallax>
+        <Parallax offset={1400} speed={0.0}>
+          <ContactSection />
+        </Parallax>
       </main>
-
-      {/* {Footer} */}
+      <FooterSection />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { cn } from "../lib/utils";
 import { useState, useEffect } from "react";
 import { X, Menu } from "lucide-react";
+import NavLogoButton from "./NavLogoButton";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -12,6 +13,26 @@ const navItems = [
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        setHidden(true); // Scrolling down
+      } else {
+        setHidden(false); // Scrolling up
+      }
+
+      setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollTop]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,52 +48,60 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
+        "fixed w-full z-50 transition-transform duration-300",
+        isScrolled
+          ? "py-3 bg-background/80 backdrop-blur-md shadow-xs"
+          : "py-5",
+        hidden ? "-translate-y-full" : "translate-y-0"
       )}
     >
-      <div className="flex justify-end p-2">
-        <div className="hidden m-auto pr-10 flex md:flex space-x-6">
-          {navItems.map((links, key) => (
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
+        <div className="flex-shrink-0">
+          <NavLogoButton />
+        </div>
+        <div className="hidden md:flex items-center space-x-6">
+          {navItems.map((link, key) => (
             <a
               key={key}
-              href={links.href}
-              className=" font-[300] text-white hover:text-white/50 transition-colors duration-300 "
+              href={link.href}
+              className="hover:text-[#00FFF4] transition text-sm"
             >
-              {links.name}
+              {link.name}
             </a>
           ))}
         </div>
 
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:flex md:hidden p-4 text-foreground z-50"
+          className="md:hidden p-4 text-foreground z-50"
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
+      </div>
 
-        <div
-          className={cn(
-            "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
-            "transition-all duration-300 md:hidden",
-            isMenuOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
-          )}
-        >
-          <div className="flex flex-col space-y-8 text-xl">
-            {navItems.map((links, key) => (
-              <a
-                key={key}
-                href={links.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300 "
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {links.name}
-              </a>
-            ))}
-          </div>
+      {/* Mobile Dropdown */}
+      <div
+        className={cn(
+          "fixed h-screen inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
+          "transition-all duration-300 md:hidden",
+          isMenuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        )}
+      >
+        <div className="flex flex-col space-y-8 text-xl">
+          {navItems.map((link, key) => (
+            <a
+              key={key}
+              href={link.href}
+              className="text-foreground/80 hover:text-[#00FFF4] transition"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {link.name}
+            </a>
+          ))}
         </div>
       </div>
     </nav>

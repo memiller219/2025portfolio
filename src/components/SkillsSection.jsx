@@ -1,14 +1,20 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Code, Smartphone, Layers, Cpu, Database, Figma } from "lucide-react";
+import { Code, Smartphone, Layers, Cpu, Database } from "lucide-react";
 import GeometricParallax from "./GeometricParallax";
+import { FaFigma } from "react-icons/fa";
+import { IoCodeSlashOutline } from "react-icons/io5";
+import { GoPeople } from "react-icons/go";
 
 const skills = [
-  { icon: <Code />, label: "JavaScript / TypeScript" },
+  {
+    icon: <IoCodeSlashOutline className="text-2xl" />,
+    label: "Clean. Readable. Scalable",
+  },
   { icon: <Smartphone />, label: "Responsive Design" },
   { icon: <Layers />, label: "Component Architecture" },
-  { icon: <Figma />, label: "Figma to Code" },
-  { icon: <Cpu />, label: "React / Next.js" },
+  { icon: <GoPeople className="text-2xl" />, label: "UI / UX" },
+  { icon: <Cpu />, label: "Strategy & Planning" },
   { icon: <Database />, label: "API Integration" },
 ];
 
@@ -26,19 +32,16 @@ export default function SkillsSection() {
     <section
       id="skills"
       ref={sectionRef}
-      className="relative py-32 px-6 max-w-6xl mx-auto"
+      className="relative py-40 px-6 max-w-6xl mx-auto"
     >
       <GeometricParallax />
-
-      {/* Sticky Title */}
       <motion.h2
         style={{ opacity }}
-        className="text-4xl font-bold text-center sticky top-[70vh] z-0 pointer-events-none"
+        className="text-4xl font-bold text-center sticky top-[60vh] z-0 pointer-events-none"
       >
-        What I Use <span className="font-light text-2xl">(so far...)</span>
+        Stuff I'm pretty good at
       </motion.h2>
 
-      {/* Scrollable Tiles */}
       <div className="mt-[10vh] grid grid-cols-2 md:grid-cols-3 gap-6 relative z-10">
         {skills.map((skill, index) => (
           <motion.div
