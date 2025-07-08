@@ -1,36 +1,48 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Code, Smartphone, Layers, Cpu, Database, Figma } from "lucide-react";
+import { Code, Smartphone, Layers, Cpu, Database } from "lucide-react";
 import GeometricParallax from "./GeometricParallax";
+import { FaFigma } from "react-icons/fa";
+import { IoCodeSlashOutline } from "react-icons/io5";
+import { GoPeople } from "react-icons/go";
 
 const skills = [
-  { icon: <Code />, label: "JavaScript / TypeScript" },
+  {
+    icon: <IoCodeSlashOutline className="text-2xl" />,
+    label: "Clean. Readable. Scalable",
+  },
   { icon: <Smartphone />, label: "Responsive Design" },
   { icon: <Layers />, label: "Component Architecture" },
-  { icon: <Figma />, label: "Figma to Code" },
-  { icon: <Cpu />, label: "React / Next.js" },
+  { icon: <GoPeople className="text-2xl" />, label: "UI / UX" },
+  { icon: <Cpu />, label: "Strategy & Planning" },
   { icon: <Database />, label: "API Integration" },
 ];
 
 export default function SkillsSection() {
-  const ref = useRef(null);
+  const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: sectionRef,
     offset: ["start end", "end start"],
   });
-  const opacity = useTransform(scrollYProgress, [0.2, 0.7], [1, 0]);
+
+  // Fade title out once tiles start covering it
+  const opacity = useTransform(scrollYProgress, [0.2, 0.4], [1, 0]);
 
   return (
-    <section ref={ref} className="relative py-32 px-6 max-w-6xl mx-auto">
+    <section
+      id="skills"
+      ref={sectionRef}
+      className="relative py-40 px-6 max-w-6xl mx-auto"
+    >
       <GeometricParallax />
       <motion.h2
         style={{ opacity }}
-        className="text-4xl font-bold text-center sticky top-24 z-10"
+        className="text-4xl font-bold text-center sticky top-[60vh] z-0 pointer-events-none"
       >
-        Skills
+        Stuff I'm pretty good at
       </motion.h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-20 z-0 relative">
+      <div className="mt-[10vh] grid grid-cols-2 md:grid-cols-3 gap-6 relative z-10">
         {skills.map((skill, index) => (
           <motion.div
             key={index}
