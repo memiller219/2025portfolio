@@ -58,14 +58,11 @@ export default function ProjectsSection() {
         {finishedProjects.map((project, index) => (
           <motion.div
             key={index}
-            className="flex flex-col md:flex-row items-center gap-8 bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-lg shadow-xl hover:scale-102 hover:border-[#00FFF4] transition-transform duration-300 cursor-pointer"
+            className="flex flex-col md:flex-row items-center gap-8 bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-lg shadow-xl hover:scale-102 hover:border-[#00FFF4] transition-transform duration-300"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.15, duration: 0.6 }}
             viewport={{ once: true }}
-            onClick={() =>
-              project.demoLink && window.open(project.demoLink, "_blank")
-            }
           >
             <img
               src={project.image}
@@ -92,7 +89,7 @@ export default function ProjectsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button className="mt-4 px-4 py-2 rounded-lg font-medium bg-indigo-600 hover:bg-indigo-700 text-white transition-colors">
+                <button className="mt-4 px-4 py-2 rounded-lg font-medium bg-indigo-600 hover:bg-indigo-700 text-white transition-colors cursor-pointer">
                   View Demo
                 </button>
               </a>
