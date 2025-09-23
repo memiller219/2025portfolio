@@ -21,7 +21,7 @@ export default function AboutHero() {
           <br />I transform Figma designs into sleek, scalable React &
           TypeScript interfaces.
         </p>
-        <div className="flex justify-evenly">
+        <div className="flex justify-between flex-col gap-4">
           <a
             href="#projects"
             className="inline-block px-6 py-3 bg-indigo-600/40 hover:bg-indigo-600 text-white font-medium rounded-full transition"

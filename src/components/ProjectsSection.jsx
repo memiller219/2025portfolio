@@ -1,10 +1,19 @@
 import { motion } from "framer-motion";
 import hiraKata from "../assets/hiraKata1.png";
 import travel from "../assets/travel.png";
-import dashboard from "../assets/dashboard.png"
+import dashboard from "../assets/dashboard.png";
+import aircall from "../assets/aircall.png";
 
 // ✅ Finished projects
 const finishedProjects = [
+  {
+    title: "Podcast Page Mockup",
+    description:
+      "A clean, mobile-friendly landing page, designed to highlight new episodes and allow for testing new ideas.",
+    stack: ["React", "TailwindCSS", "Storyblok CMS"],
+    image: aircall,
+    demoLink: "https://memiller219.github.io/aircallpodcast/podcast",
+  },
   {
     title: "Hira-Kata",
     description:
