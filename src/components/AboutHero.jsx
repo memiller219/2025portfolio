@@ -21,12 +21,20 @@ export default function AboutHero() {
           <br />I transform Figma designs into sleek, scalable React &
           TypeScript interfaces.
         </p>
-        <a
-          href="#projects"
-          className="inline-block px-6 py-3 bg-indigo-600/40 hover:bg-indigo-600 text-white font-medium rounded-full transition"
-        >
-          See My Work
-        </a>
+        <div className="flex justify-evenly">
+          <a
+            href="#projects"
+            className="inline-block px-6 py-3 bg-indigo-600/40 hover:bg-indigo-600 text-white font-medium rounded-full transition"
+          >
+            See My Work
+          </a>
+          <a
+            href="https://github.com/memiller219"
+            className="inline-block px-6 py-3 bg-indigo-600/40 hover:bg-indigo-600 text-white font-medium rounded-full transition"
+          >
+            Browse My Github
+          </a>
+        </div>
       </motion.div>
       <BottomGradient />
     </section>

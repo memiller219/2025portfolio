@@ -54,7 +54,7 @@ const ParallaxHero = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
-                  className="text-3xl md:text-5xl font-bold max-w-3xl"
+                  className="text-3xl md:text-5xl font-bold max-w-3xl md:ml-10"
                 >
                   <span className="invisible block h-0 overflow-hidden">
                     just one more console.log away from greatness.
@@ -91,7 +91,7 @@ const ParallaxHero = () => {
                   </div>
                 </motion.div>
               </h1>
-              <p className="opacity-0 animate-fade-in-delay-3 mt-3 max-2-2xl text-center md:col-start-1 md:col-span-2 md:text-left">
+              <p className="opacity-0 animate-fade-in-delay-3 mt-3 max-2-2xl text-center md:col-start-1 md:col-span-2 md:text-left md:ml-10 ">
                 <span className="opacity-0 animate-fade-in-delay-3 font-thin">
                   Mid-level developer, full-time bug whisperer, part-time stack
                   overflow archaeologist.
